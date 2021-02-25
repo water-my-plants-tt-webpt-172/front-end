@@ -1,0 +1,8 @@
+#49fcd4 //Aqua Green
+rgba(0, 0, 0, 0.25) //Grey Text
+#0e2923 //Dark Green onHover Button
+#000000 // Normal Text, Button Color
+#ffffff // Main Background, Button Text
+
+Primary font-family: "Source Sans Pro", Helvetica, sans-serif;
+Accent/Secondary Headers/Buttons font-family: "Raleway", Helvetica, sans-serif;
