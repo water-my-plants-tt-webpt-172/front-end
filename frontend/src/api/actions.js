@@ -69,7 +69,7 @@ export const userSignUp = (signUpInfo) => dispatch => {
 export const userEdit = (userEdit) => dispatch => {
     dispatch({ type: API_ACTION_START });
     authWithAxios()
-        .put(someURL/userEdit.username, userEdit)
+        .patch(someURL/userEdit.username, userEdit)
         .then(res => {
             dispatch({type: USER_SIGN_SUCCESS, payload : res.somePayloadPoint})
         })
