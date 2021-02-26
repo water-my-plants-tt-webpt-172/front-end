@@ -24,7 +24,7 @@ export const addPlant = (plant) => dispatch => {
         .post('https://dont-let-it-die.herokuapp.com/plants/', plant)
         .then(res =>
             dispatch({ type: PLANT_UPDATE_SUCCESS, payload: res.somePayloadPoint}))
-        .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
+        .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}));
 }
 
 export const editPlant = (plant) => dispatch => {
