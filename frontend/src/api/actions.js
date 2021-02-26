@@ -27,7 +27,25 @@ export const getPlants = () => dispatch => {
 export const addPlant = (plant) => dispatch => {
     dispatch({ type: PLANT_DATA_START });
     axiosWithAuth()
-        .get(someURL, plant)
+        .post(someURL, plant)
+        .then(res =>
+            dispatch({ type: PLANT_DATA_SUCCESS, payload: res.somePayloadPoint}))
+        .catch(err => dispatch({ type: PLANT_DATA_FAIL, payload: err}))
+}
+
+export const editPlant = (plant) => dispatch => {
+    dispatch({ type: PLANT_DATA_START });
+    axiosWithAuth()
+        .put(someURL/plant.id, plant)
+        .then(res =>
+            dispatch({ type: PLANT_DATA_SUCCESS, payload: res.somePayloadPoint}))
+        .catch(err => dispatch({ type: PLANT_DATA_FAIL, payload: err}))
+}
+
+export const deletePlant = (plant) => dispatch => {
+    dispatch({ type: PLANT_DATA_START });
+    axiosWithAuth()
+        .delete(someURL, plant)
         .then(res =>
             dispatch({ type: PLANT_DATA_SUCCESS, payload: res.somePayloadPoint}))
         .catch(err => dispatch({ type: PLANT_DATA_FAIL, payload: err}))
@@ -52,6 +70,17 @@ export const userSignUp = (signUpInfo) => dispatch => {
         })
         .catch(err => dispatch({ type: USER_SIGN_FAIL, payload: err}))
 }
+
+export const userEdit = (userEdit) => dispatch => {
+    dispatch({ type: USER_SIGN_START });
+    axios
+        .put(someURL/userEdit.username, userEdit)
+        .then(res => {
+            dispatch({type: USER_SIGN_SUCCESS, payload : res.somePayloadPoint})
+        })
+        .catch(err => dispatch({ type: USER_SIGN_FAIL, payload: err}))
+}
+
 
 export const updateError = (error) => {
     return {
