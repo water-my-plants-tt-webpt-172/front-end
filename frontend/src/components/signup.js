@@ -1,5 +1,5 @@
 import React from "react";
-import { SignupForm, FormDiv } from "./styledcomp";
+import { SignupForm, FormInput, FormButton, FormHeading } from "./styledcomp";
 
 // const onSubmit = (event) => {
 //   event.preventDefault();
@@ -16,33 +16,33 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <FormDiv>
-        <SignupForm>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={this.state.username}
-            onChange={(e) => this.setState({ username: e.target.value })}
-            maxLength="30"
-          />
-          <input
-            type="text"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={(e) => this.setState({ password: e.target.value })}
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={this.state.phone}
-            onChange={(e) => this.setState({ phone: e.target.value })}
-            maxLength="15"
-          />
-        </SignupForm>
-      </FormDiv>
+      <SignupForm>
+        <FormHeading>Create an Account</FormHeading>
+        <FormInput
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={this.state.username}
+          onChange={(e) => this.setState({ username: e.target.value })}
+          maxLength="30"
+        />
+        <FormInput
+          type="Password"
+          name="password"
+          placeholder="Password"
+          value={this.state.password}
+          onChange={(e) => this.setState({ password: e.target.value })}
+        />
+        <FormInput
+          type="tel"
+          name="phone"
+          placeholder="Phone Number"
+          value={this.state.phone}
+          onChange={(e) => this.setState({ phone: e.target.value })}
+          maxLength="15"
+        />
+        <FormButton>Sign Up</FormButton>
+      </SignupForm>
     );
   }
 }

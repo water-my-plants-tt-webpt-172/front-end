@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginForm, FormDiv } from "./styledcomp";
+import { LoginForm, FormInput, FormButton,FormHeading } from "./styledcomp";
 
 class Login extends React.Component {
   // setting our form's inital values to be empty
@@ -11,25 +11,25 @@ class Login extends React.Component {
 
   render() {
     return (
-      <FormDiv>
-        <LoginForm>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={this.state.username}
-            onChange={(e) => this.setState({ username: e.target.value })}
-            maxLength="30"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={(e) => this.setState({ password: e.target.value })}
-          />
-        </LoginForm>
-      </FormDiv>
+      <LoginForm>
+        <FormHeading>Login</FormHeading>
+        <FormInput
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={this.state.username}
+          onChange={(e) => this.setState({ username: e.target.value })}
+          maxLength="30"
+        />
+        <FormInput
+          type="Password"
+          name="password"
+          placeholder="Password"
+          value={this.state.password}
+          onChange={(e) => this.setState({ password: e.target.value })}
+        />
+        <FormButton>Login</FormButton>
+      </LoginForm>
     );
   }
 }

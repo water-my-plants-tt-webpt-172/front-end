@@ -1,16 +1,17 @@
 import React from "react";
 import Signup from "./signup";
 import Login from "./login";
-import { FormDivider } from "./styledcomp";
+import { FormPage,FormDiv, FormDivider } from "./styledcomp";
 
 function SignLogin() {
   return (
-    <div>
-      <p>Sign Up/Login</p>
-      <Login />
-      <FormDivider></FormDivider>
-      <Signup />
-    </div>
+    <FormPage>
+      <FormDiv>
+        <Login />
+        <FormDivider></FormDivider>
+        <Signup />
+      </FormDiv>
+    </FormPage>
   );
 }
 
