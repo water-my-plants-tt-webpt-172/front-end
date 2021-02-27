@@ -24,6 +24,7 @@ class Signup extends React.Component {
       console.log(this.state);
       this.props.userSignUp(this.state);
     };
+    const success = this.props.success;
     return (
       <SignupForm>
         <FormHeading>Create an Account</FormHeading>
@@ -51,7 +52,7 @@ class Signup extends React.Component {
           maxLength="15"
         />
         <FormButton onClick={formSubmit}>Sign Up</FormButton>
-
+        {success ? <p className="Success">Successful</p> : <p></p>}
       </SignupForm>
     );
   }

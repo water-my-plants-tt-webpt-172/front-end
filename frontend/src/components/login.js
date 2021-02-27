@@ -16,11 +16,13 @@ class Login extends React.Component {
   }
 
   render() {
+    
     const formSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state);
       this.props.userLogin(this.state);
     };
+
+    const success = this.props.success;
     return (
       <LoginForm>
         <FormHeading>Login</FormHeading>
@@ -40,6 +42,7 @@ class Login extends React.Component {
           onChange={(e) => this.setState({ password: e.target.value })}
         />
         <FormButton onClick={formSubmit}>Login</FormButton>
+        {success ? <p className="Success">Successful</p> : <p></p>}
       </LoginForm>
     );
   }
