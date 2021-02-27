@@ -50,7 +50,7 @@ export const userLogin = (loginInfo) => dispatch => {
     axios
         .post('https://dont-let-it-die.herokuapp.com/auth/login', loginInfo)
         .then(res => {
-            localStorage.setItem('token' , res.somePayloadPoint);
+            localStorage.setItem('token' , res.token);
             dispatch({type: USER_LOGIN_SUCCESS})
         })
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
@@ -61,7 +61,9 @@ export const userSignUp = (signUpInfo) => dispatch => {
     axios
         .post('https://dont-let-it-die.herokuapp.com/auth/register', signUpInfo)
         .then(res => {
-            dispatch({type: USER_SIGN_SUCCESS, payload : res.somePayloadPoint})
+            localStorage.setItem('token' , res.data.token);
+            console.log('User Sign Success')
+            dispatch({type: USER_SIGN_SUCCESS, payload : res.data})
         })
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
 }
