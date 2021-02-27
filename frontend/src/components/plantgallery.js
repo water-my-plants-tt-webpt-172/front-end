@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlantCard from './plantCard';
 
-class plantGallery extends Component {
+class PlantGallery extends Component {
     static defaultProps = {
         usersPlants: [
             { id: 1, nickname: 'Pearly', species: 'curio' },
@@ -21,4 +21,4 @@ class plantGallery extends Component {
     }
 }
 
-export default plantGallery;
+export default PlantGallery;
