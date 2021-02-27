@@ -7,7 +7,7 @@ export const PLANT_GET_SUCCESS = "PLANT_DATA_SUCCESS";
 export const PLANT_UPDATE_SUCCESS = "PLANT_UPDATE_SUCCESS";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_SIGN_SUCCESS = "USER_SIGN_SUCCESS";
-export const UPDATE_ERROR = "UPDATE_ERROR";
+export const UPDATE_ERROR = "UPDATE_ERROR"; 
 
 export const getPlants = () => dispatch => {
     dispatch({ type: API_ACTION_START });
