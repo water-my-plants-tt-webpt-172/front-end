@@ -1,15 +1,26 @@
 import React from "react";
 import { LoginForm, FormInput, FormButton,FormHeading } from "./styledcomp";
+import { userLogin } from '../api/actions'
+import { connect } from 'react-redux'
+
 
 class Login extends React.Component {
   // setting our form's inital values to be empty
-  state = {
-    username: "",
-    phone: "",
-    password: "",
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+        username: "",
+        password: "",
+        phone: ""
+    }
+  }
 
   render() {
+    const formSubmit = (e) => {
+      e.preventDefault();
+      console.log(this.state);
+      this.props.userLogin(this.state);
+    };
     return (
       <LoginForm>
         <FormHeading>Login</FormHeading>
@@ -28,13 +39,24 @@ class Login extends React.Component {
           value={this.state.password}
           onChange={(e) => this.setState({ password: e.target.value })}
         />
-        <FormButton>Login</FormButton>
+        <FormButton onClick={formSubmit}>Login</FormButton>
       </LoginForm>
     );
   }
 }
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    isLoading: state.user,
+    user: state.user,
+    error: state.error,
+    success: state.success
+  }
+}
 
-export default Login;
+const mapDispatchToProps = {userLogin};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 // export default function Login(props) {
 //   const { values, submit, errors } = props;
