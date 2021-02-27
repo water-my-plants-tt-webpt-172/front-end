@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 
 
+
 class Signup extends React.Component {
   // setting our form's inital values to be empty
   
@@ -17,7 +18,6 @@ class Signup extends React.Component {
     }
   }
   
-
   render() {
     const formSubmit = (e) => {
       e.preventDefault();
@@ -52,7 +52,7 @@ class Signup extends React.Component {
           maxLength="15"
         />
         <FormButton onClick={formSubmit}>Sign Up</FormButton>
-        {success ? <p className="Success">Successful</p> : <p></p>}
+        {success === 'User Registered' ? <p className="Success">Successful</p> : <p></p>}
       </SignupForm>
     );
   }

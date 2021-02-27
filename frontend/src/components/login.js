@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { LoginForm, FormInput, FormButton,FormHeading } from "./styledcomp";
 import { userLogin } from '../api/actions'
 import { connect } from 'react-redux'
+import { useHistory } from "react-router-dom";
 
 
-class Login extends React.Component {
+const Login = (props) => {
   // setting our form's inital values to be empty
-  constructor(props){
-    super(props);
-    this.state = {
+    const [user, setUser] = useState({
         username: "",
-        password: "",
-        phone: ""
-    }
-  }
-
-  render() {
-    
-    const formSubmit = (e) => {
-      e.preventDefault();
-      this.props.userLogin(this.state);
+        password: ""
+    })
+  
+    const onInputChange = e => {
+      setUser({
+        ...user,
+        [e.target.name]: e.target.value
+      })
     };
 
-    const success = this.props.success;
+    const history = useHistory();
+
+    const formSubmit = (e) => {
+      e.preventDefault();
+      console.log(user);
+      props.userLogin(user);
+      if(localStorage.getItem('token') !== null){
+        history.push('/plants')
+      }
+    };
+
+    const success = props.success;
+
     return (
       <LoginForm>
         <FormHeading>Login</FormHeading>
@@ -30,23 +39,21 @@ class Login extends React.Component {
           type="text"
           name="username"
           placeholder="Username"
-          value={this.state.username}
-          onChange={(e) => this.setState({ username: e.target.value })}
+          onChange={onInputChange}
           maxLength="30"
         />
         <FormInput
           type="Password"
           name="password"
           placeholder="Password"
-          value={this.state.password}
-          onChange={(e) => this.setState({ password: e.target.value })}
+          onChange={onInputChange}
         />
         <FormButton onClick={formSubmit}>Login</FormButton>
-        {success ? <p className="Success">Successful</p> : <p></p>}
+        {success === 'Login Successful' ? <p className="Success">Successful</p> : <p></p>}
       </LoginForm>
     );
   }
-}
+
 const mapStateToProps = (state) => {
   console.log(state)
   return {

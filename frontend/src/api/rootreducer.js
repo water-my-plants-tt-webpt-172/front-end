@@ -1,5 +1,6 @@
 import * as actions from './actions'
 
+
 export const initialState = {
     isLoading: false,
     user: {

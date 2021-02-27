@@ -1,6 +1,7 @@
 import authWithAxios from '../utils/authWithAxios'
 import axios from 'axios'
 
+
 export const API_ACTION_START = "API_ACTION_START"
 export const API_ACTION_FAIL = "API_ACTION_FAIL"
 export const PLANT_GET_SUCCESS = "PLANT_DATA_SUCCESS";
@@ -8,6 +9,8 @@ export const PLANT_UPDATE_SUCCESS = "PLANT_UPDATE_SUCCESS";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_SIGN_SUCCESS = "USER_SIGN_SUCCESS";
 export const UPDATE_ERROR = "UPDATE_ERROR"; 
+
+
 
 export const getPlants = () => dispatch => {
     dispatch({ type: API_ACTION_START });
@@ -50,7 +53,8 @@ export const userLogin = (loginInfo) => dispatch => {
     axios
         .post('https://dont-let-it-die.herokuapp.com/auth/login', loginInfo)
         .then(res => {
-            localStorage.setItem('token' , res.token);
+            console.log(res)
+            localStorage.setItem('token' , res.data.token);
             dispatch({type: USER_LOGIN_SUCCESS})
         })
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
@@ -63,7 +67,7 @@ export const userSignUp = (signUpInfo) => dispatch => {
         .then(res => {
             localStorage.setItem('token' , res.data.token);
             console.log('User Sign Success')
-            dispatch({type: USER_SIGN_SUCCESS, payload : res.data})
+            dispatch({type: USER_SIGN_SUCCESS, payload : res.data.data})
         })
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
 }
