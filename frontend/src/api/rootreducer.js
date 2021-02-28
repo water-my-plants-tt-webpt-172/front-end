@@ -1,11 +1,12 @@
 import * as actions from './actions'
 
+
 export const initialState = {
     isLoading: false,
     user: {
         username: '',
         password: '',
-        telephone: ''
+        phone: ''
     },
     plants: [],
     error: '',
@@ -47,7 +48,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 password: '',
                 isLoading: false,
-                error: ''
+                error: '',
+                success: 'Login Successful'
             }
         case actions.USER_SIGN_SUCCESS:
             //Maybe have it auto sign in users after sign up
@@ -56,8 +58,11 @@ const reducer = (state = initialState, action) => {
                 isLoading: false,
                 username: '',
                 password: '',
-                error: ''
+                error: '',
+                success: 'User Registered'
             }
+        default:
+            return state;
     }
 }
 

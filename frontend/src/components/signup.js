@@ -1,20 +1,30 @@
 import React from "react";
 import { SignupForm, FormInput, FormButton, FormHeading } from "./styledcomp";
+import { userSignUp } from '../api/actions'
+import { connect } from 'react-redux'
 
-// const onSubmit = (event) => {
-//   event.preventDefault();
-//   onSubmit();
-// };
+
+
 
 class Signup extends React.Component {
   // setting our form's inital values to be empty
-  state = {
-    username: "",
-    phone: "",
-    password: "",
-  };
-
+  
+  constructor(props){
+    super(props);
+    this.state = {
+        username: "",
+        password: "",
+        phone: ""
+    }
+  }
+  
   render() {
+    const formSubmit = (e) => {
+      e.preventDefault();
+      console.log(this.state);
+      this.props.userSignUp(this.state);
+    };
+    const success = this.props.success;
     return (
       <SignupForm>
         <FormHeading>Create an Account</FormHeading>
@@ -41,10 +51,23 @@ class Signup extends React.Component {
           onChange={(e) => this.setState({ phone: e.target.value })}
           maxLength="15"
         />
-        <FormButton>Sign Up</FormButton>
+        <FormButton onClick={formSubmit}>Sign Up</FormButton>
+        {success === 'User Registered' ? <p className="Success">Successful</p> : <p></p>}
       </SignupForm>
     );
   }
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    isLoading: state.user,
+    user: state.user,
+    error: state.error,
+    success: state.success
+  }
+}
+
+const mapDispatchToProps = {userSignUp};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
