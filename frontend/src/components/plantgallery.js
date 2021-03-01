@@ -14,7 +14,7 @@ class PlantGallery extends Component {
         return (
             <div>
                 {this.props.usersPlants.map((plant) => (
-                    <PlantCard nickname={plant.nickname} species={plant.species} />
+                    <PlantCard plant={plant} />
                 ))}
             </div>
         )
