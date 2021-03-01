@@ -21,4 +21,4 @@ class PlantGallery extends Component {
     }
 }
 
-export default PlantGallery;   
+export default PlantGallery;
