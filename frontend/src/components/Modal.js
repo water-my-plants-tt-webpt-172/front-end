@@ -5,7 +5,7 @@ const Modal = (props) => {
 
   const toggleHandler = () => {
     const toggle = openAddPlant;
-    setState(openAddPlant : !toggle)
+    setOpenAddPlant({openAddPlant : !toggle})
   }
 
   return (
