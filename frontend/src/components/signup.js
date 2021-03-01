@@ -22,7 +22,6 @@ const [user, setUser] = useState({
 
   const formSubmit = (e) => {
       e.preventDefault();
-      console.log(user);
       props.userSignUp(user);
     };
 
@@ -58,7 +57,6 @@ const [user, setUser] = useState({
   }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     isLoading: state.user,
     user: state.user,

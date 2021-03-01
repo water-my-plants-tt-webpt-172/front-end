@@ -23,7 +23,6 @@ const Login = (props) => {
 
     const formSubmit = (e) => {
       e.preventDefault();
-      console.log(user);
       props.userLogin(user);
       if(localStorage.getItem('token') !== null){
         history.push('/plants')
@@ -55,7 +54,6 @@ const Login = (props) => {
   }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     isLoading: state.user,
     user: state.user,
@@ -67,47 +65,3 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {userLogin};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// export default function Login(props) {
-//   const { values, submit, errors } = props;
-
-//   const onSubmit = (event) => {
-//     event.preventDefault();
-//     submit();
-//   };
-
-//   // const onChange = event => {
-//   //     const { name, value, type } = event.target
-//   //     const usedValue = type === 'checkbox' ? checked: value
-//   //     change(name, usedValue)
-//   // }
-
-//   return (
-//     <form onSubmit={onSubmit}>
-//       <div className="form-inputs">
-//           <input
-//             name="username"
-//             type="text"
-//             placeholder='Username'
-//             value={values.username}
-//             onChange={onChange}
-//           />
-//           <input
-//             name="password"
-//             type="password"
-//             placeholder='Password'
-//             value={values.password}
-//             onChange={onChange}
-//           />
-//       </div>
-//       <div className="errors">
-//         <div>{errors.username}</div>
-//         <div>{errors.email}</div>
-//         <div>{errors.password}</div>
-//       </div>
-//       {/* <button id="submitBtn" disabled={disabled}>
-//         Log In
-//       </button> */}
-//     </form>
-//   );
-// }
