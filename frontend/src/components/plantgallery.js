@@ -1,18 +1,22 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { getPlants } from '../api/actions'
+import { connect } from 'react-redux'
 import PlantCard from './plantcard';
 
 const PlantGallery = (props) => {
     useEffect(() => {
         props.getPlants();
-    })
+        console.log(props.plants);
+    },[props.isLoading])
 
     return (
-        <div className="plantgalcontainer">
-            {props.isLoading ?
+        <div className="plantgalcontainer">            
+            {props.isLoading === true ?
                 <p className="isLoading">Loading...</p>
                 :
                 props.plants.map((plant) => (
-                        <PlantCard plant={plant} />
+                        <PlantCard id={plant.id} nickname={plant.nickname} 
+                        species={plant.species} h2oFrequency={plant.h2oFrequency}/>
                     ))
             }
         </div>
@@ -21,7 +25,6 @@ const PlantGallery = (props) => {
 
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         isLoading: state.user,
         plants: state.plants,

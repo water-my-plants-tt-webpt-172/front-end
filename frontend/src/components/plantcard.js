@@ -2,14 +2,17 @@ import React from 'react';
 
 
 const PlantCard = (props) => {
-    const plant = props
+    const [id , nickname, species, h2oFrequency] = props;
+
+
         return (
             <div>
-                <h2>{plant.nickname.toUpperCase()}</h2>
+                <h2>{nickname.toUpperCase()}</h2>
                 <div>
                     <button>Water Me!</button>
-                    <p>X days</p>
-                    <p>{plant.species}</p>
+                    <p>{h2oFrequency} days</p>
+                    <p>{species}</p>
+                    <small>ID : {id}</small>
                 </div>
             </div>
         );
