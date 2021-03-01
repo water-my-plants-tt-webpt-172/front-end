@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { SignupForm, FormInput, FormButton, FormHeading } from "./styledcomp";
 import { userSignUp } from '../api/actions'
 import { connect } from 'react-redux'
 
 
 
-
-class Signup extends React.Component {
+const Signup = (props) => {
   // setting our form's inital values to be empty
-  
-  constructor(props){
-    super(props);
-    this.state = {
+const [user, setUser] = useState({
         username: "",
         password: "",
         phone: ""
-    }
-  }
+    })
   
-  render() {
-    const formSubmit = (e) => {
-      e.preventDefault();
-      console.log(this.state);
-      this.props.userSignUp(this.state);
+    const onInputChange = e => {
+      setUser({
+        ...user,
+        [e.target.name]: e.target.value
+      })
     };
-    const success = this.props.success;
+
+  const formSubmit = (e) => {
+      e.preventDefault();
+      console.log(user);
+      props.userSignUp(user);
+    };
+
+    const success = props.success;
+    
     return (
       <SignupForm>
         <FormHeading>Create an Account</FormHeading>
@@ -32,23 +35,20 @@ class Signup extends React.Component {
           type="text"
           name="username"
           placeholder="Username"
-          value={this.state.username}
-          onChange={(e) => this.setState({ username: e.target.value })}
+          onChange={onInputChange}
           maxLength="30"
         />
         <FormInput
           type="Password"
           name="password"
           placeholder="Password"
-          value={this.state.password}
-          onChange={(e) => this.setState({ password: e.target.value })}
+          onChange={onInputChange}
         />
         <FormInput
           type="tel"
           name="phone"
           placeholder="Phone Number"
-          value={this.state.phone}
-          onChange={(e) => this.setState({ phone: e.target.value })}
+          onChange={onInputChange}
           maxLength="15"
         />
         <FormButton onClick={formSubmit}>Sign Up</FormButton>
@@ -56,7 +56,6 @@ class Signup extends React.Component {
       </SignupForm>
     );
   }
-}
 
 const mapStateToProps = (state) => {
   console.log(state)
