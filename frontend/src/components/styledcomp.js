@@ -165,14 +165,41 @@ export const CloseModalButton = styled(MdClose)`
 
 export const Body = styled.div`
   margin: 0 auto;
-  max-width: 75%
-  `;
+  max-width: 75%;
+`;
 
 export const PlantContainer = styled.div`
   display: grid;
   justify-content: center;
+  grid-gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
 `;
-// export const SignupForm = styled.form`
-//   background-color: blue;
-// `;
+
+// Plant Card ============
+
+export const Card = styled.div`
+  border: 1px solid #333;
+  border-radius: 20px;
+  margin-top: 3rem;
+`;
+
+export const CardImg = styled.img`
+  width: 100%;
+  object-fit: contain;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+`;
+
+export const P = styled.p`
+  font-size: 1.2rem;
+`;
+
+export const WaterReset = styled.button`
+  width: 7rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  outline: none;
+  padding: .5rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+`;

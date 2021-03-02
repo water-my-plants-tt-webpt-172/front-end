@@ -1,23 +1,28 @@
-import React from 'react';
-
+import React from "react";
+import * as style from "./styledcomp";
 
 const PlantCard = (props) => {
-    const {id , nickname, species, h2oFrequency} = props;
+  const { id, nickname, species, h2oFrequency } = props;
 
+  //   const colorChange (){
+  //     h2oFrequency <= 0 ? true : false
+  //   };
 
-        return (
-            <div>
-                <h2>{nickname.toUpperCase()}</h2>
-                <div>
-                    <button>Water Me!</button>
-                    <p>{h2oFrequency} days</p>
-                    <p>{species}</p>
-                    {console.log(id)}
-                    <small>ID : {id}</small>
-                </div>
-            </div>
-        );
-        }
-
+  return (
+    <div>
+      <style.Card>
+        <style.CardImg src="https://images.unsplash.com/photo-1520565538411-e641b5cc7843?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
+        <small>ID : {id}</small>
+        <style.P>{nickname}</style.P>
+        <style.P>{species}</style.P>
+        {/* {console.log(id)} */}
+        <style.P>{h2oFrequency} days</style.P>
+        <style.WaterReset>
+          Reset Water Reminder
+        </style.WaterReset>
+      </style.Card>
+    </div>
+  );
+};
 
 export default PlantCard;
