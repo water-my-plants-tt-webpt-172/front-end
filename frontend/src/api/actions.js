@@ -17,7 +17,6 @@ export const getPlants = () => dispatch => {
     authWithAxios()
         .get('https://dont-let-it-die.herokuapp.com/plants/')
         .then(res => {
-            console.log(res.data);
             dispatch({ type: PLANT_GET_SUCCESS, payload: res.data})})
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
 }

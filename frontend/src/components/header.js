@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Modal from "./modal";
 import * as style from "./styledcomp";
 
-const Header = () => {
+const Header = (props) => {
   //   const [open, setOpen] = useState(false);
 
   //   const openModal = () => {
   //     setOpen(!open);
   //   };
-
+  const {plants} = props;
   const [showModal, setShowModal] = useState(false);
 
   //create a open modal toggler function
@@ -22,7 +22,7 @@ const Header = () => {
       <style.Container>
         <h1>Plant Gallery</h1>
         <style.Button onClick={openModal}>Add / Edit</style.Button>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <Modal plants={plants} showModal={showModal} setShowModal={setShowModal} />
       </style.Container>
     </div>
   );

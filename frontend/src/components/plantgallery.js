@@ -12,6 +12,7 @@ const PlantGallery = (props) => {
 
   return (
     <div className="plantgalcontainer">
+    <Header plants={props.plants}/>
       {props.isLoading === true ? (
         <p className="isLoading">Loading...</p>
       ) : (

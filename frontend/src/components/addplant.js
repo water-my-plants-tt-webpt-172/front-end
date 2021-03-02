@@ -47,10 +47,10 @@ class addplant extends Component {
                         <option value='orchid'>Orchid</option>
                     </select>
                 </label>
-                <label>
-                    Plant's Nickname:
-                    <input type='text' value={this.state.nickname} onChange={this.addNameHandler} />
-                </label>
+                    <input type='text'
+                    placeholder='Nickname' 
+                    value={this.state.nickname} 
+                    onChange={this.addNameHandler} />
                 <input type='submit' value="Submit" />
             </form>
         );
