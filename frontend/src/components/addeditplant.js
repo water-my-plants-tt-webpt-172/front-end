@@ -4,16 +4,19 @@ import EditPlant from "./editplant";
 
 
 const AddEditPlant = (props) => {
-    const plants = props;
-
+    const {plants} = props;
+    console.log(plants)
     const [addOrEdit, setAddOrEdit] = useState(true);
     //Add == TRUE && Edit == False
     const [dropDownOption, setDropDownOption] = useState('add');
 
     useEffect(() => {
-        if (!dropDownOption === 'add') {
-            setAddOrEdit(false);
+        console.log("Change to Dropdown: " + dropDownOption)
+        if (dropDownOption === 'add') {
+            setAddOrEdit(true);
         }
+        else(setAddOrEdit(false))
+        console.log("Value of add:" + addOrEdit)
     }, [dropDownOption])
 
     const onInputChange = e => {
@@ -33,8 +36,8 @@ const AddEditPlant = (props) => {
           </select>
         </form>
             {addOrEdit ?
-                <AddPlant plants={plants} /> :
-                <EditPlant plants={plants} />
+                <AddPlant /> :
+                <EditPlant plantId={dropDownOption} />
             }
         </div>
     )

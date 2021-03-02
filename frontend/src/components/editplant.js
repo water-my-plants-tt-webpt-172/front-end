@@ -1,5 +1,9 @@
+import React from 'react'
+
 const EditPlant = (props) => {
-    return (null);
+    return (
+        <div></div>
+    );
 }
 
 export default EditPlant
