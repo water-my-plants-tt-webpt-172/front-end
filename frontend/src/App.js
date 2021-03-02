@@ -12,7 +12,7 @@ function App() {
     <div className="App">
         {/**Sign up Linked to from Marketing Page**/}
         <Route exact path ="/" component = { SignLogin }/>
-        <Route path='/plants' component={ PlantGallery }/>
+        <PrivateRoute path='/plants' component={ PlantGallery }/>
     </div>
     </Router>
   );

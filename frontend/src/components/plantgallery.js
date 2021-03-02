@@ -11,23 +11,19 @@ const PlantGallery = (props) => {
   }, [props.isLoading]);
 
   return (
-    <div>
-      <Header />
-
-      <div className="plantgalcontainer">
-        {props.isLoading === true ? (
-          <p className="isLoading">Loading...</p>
-        ) : (
-          props.plants.map((plant) => (
-            <PlantCard
-              id={plant.id}
-              nickname={plant.nickname}
-              species={plant.species}
-              h2oFrequency={plant.h2oFrequency}
-            />
-          ))
-        )}
-      </div>
+    <div className="plantgalcontainer">
+      {props.isLoading === true ? (
+        <p className="isLoading">Loading...</p>
+      ) : (
+        props.plants.map((plant) => (
+          <PlantCard
+            id={plant.id}
+            nickname={plant.nickname}
+            species={plant.species}
+            h2oFrequency={plant.h2oFrequency}
+          />
+        ))
+      )}
     </div>
   );
 };
