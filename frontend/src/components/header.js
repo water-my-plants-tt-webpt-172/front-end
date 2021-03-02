@@ -8,7 +8,7 @@ const Header = (props) => {
   //   const openModal = () => {
   //     setOpen(!open);
   //   };
-  const {plants} = props;
+  const { plants } = props;
   const [showModal, setShowModal] = useState(false);
 
   //create a open modal toggler function
@@ -19,11 +19,16 @@ const Header = (props) => {
 
   return (
     <div className="App">
-      <style.Container>
-        <h1>Plant Gallery</h1>
-        <style.Button onClick={openModal}>Add / Edit</style.Button>
-        <Modal plants={plants} showModal={showModal} setShowModal={setShowModal} />
-      </style.Container>
+        <style.Container>
+          <h1>Plant Gallery</h1>
+          <style.Button onClick={openModal}>Add / Edit</style.Button>
+          <Modal
+            plants={plants}
+            showModal={showModal}
+            setShowModal={setShowModal}
+          />
+        </style.Container>
+        <style.LineBreak/>
     </div>
   );
 };

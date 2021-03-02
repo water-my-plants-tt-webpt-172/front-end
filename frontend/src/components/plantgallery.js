@@ -3,6 +3,7 @@ import { getPlants } from "../api/actions";
 import { connect } from "react-redux";
 import PlantCard from "./plantcard";
 import Header from "./header";
+import * as style from "./styledcomp";
 
 const PlantGallery = (props) => {
   useEffect(() => {
@@ -11,21 +12,23 @@ const PlantGallery = (props) => {
   }, [props.isLoading]);
 
   return (
-    <div className="plantgalcontainer">
-    <Header plants={props.plants}/>
-      {props.isLoading === true ? (
-        <p className="isLoading">Loading...</p>
-      ) : (
-        props.plants.map((plant) => (
-          <PlantCard
-            id={plant.id}
-            nickname={plant.nickname}
-            species={plant.species}
-            h2oFrequency={plant.h2oFrequency}
-          />
-        ))
-      )}
-    </div>
+    <style.Body>
+      <Header plants={props.plants} />
+      <style.PlantContainer>  
+        {props.isLoading === true ? (
+          <p className="isLoading">Loading...</p>
+        ) : (
+          props.plants.map((plant) => (
+            <PlantCard
+              id={plant.id}
+              nickname={plant.nickname}
+              species={plant.species}
+              h2oFrequency={plant.h2oFrequency}
+            />
+          ))
+        )}
+      </style.PlantContainer>
+    </style.Body>
   );
 };
 
