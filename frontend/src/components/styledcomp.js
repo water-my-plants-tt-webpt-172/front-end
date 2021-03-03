@@ -65,21 +65,27 @@ export const FormHeading = styled.h3`
 `;
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 10vh;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
 export const Button = styled.button`
   min-width: 100px;
   padding: 16px 32px;
-  border-radius: 4px;
+  border-radius: 14px;
   border: none;
-  background: #141414;
-  color: #fff;
+  background: #333;
+  color: #49fcd4;
   font-size: 24px;
   cursor: pointer;
+  outline: none;
+`;
+
+export const LineBreak = styled.hr`
+  border: 1px solid #333;
 `;
 
 export const Background = styled.div`
@@ -87,6 +93,8 @@ export const Background = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
+  top: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,8 +107,10 @@ export const ModalWrapper = styled.div`
   background: #fff;
   color: #000;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   position: relative;
+  top: 0;
+  right: 0;
+  grid-template-columns: 1fr 1fr;
   z-index: 10;
   border-radius: 10px;
 `;
@@ -153,6 +163,43 @@ export const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-// export const SignupForm = styled.form`
-//   background-color: blue;
-// `;
+export const Body = styled.div`
+  margin: 0 auto;
+  max-width: 75%;
+`;
+
+export const PlantContainer = styled.div`
+  display: grid;
+  justify-content: center;
+  grid-gap: 3rem;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
+
+// Plant Card ============
+
+export const Card = styled.div`
+  border: 1px solid #333;
+  border-radius: 20px;
+  margin-top: 3rem;
+`;
+
+export const CardImg = styled.img`
+  width: 100%;
+  object-fit: contain;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+`;
+
+export const P = styled.p`
+  font-size: 1.2rem;
+`;
+
+export const WaterReset = styled.button`
+  width: 7rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  outline: none;
+  padding: .5rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+`;

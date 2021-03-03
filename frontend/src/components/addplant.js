@@ -92,5 +92,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(AddPlant);
     // addNameHandler = (e) => {
     //     setState({ nickname: e.target.value })
     // }
-
-    //should addSpecies & addName be combined? 
