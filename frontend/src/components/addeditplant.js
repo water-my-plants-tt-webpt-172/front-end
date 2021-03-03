@@ -30,7 +30,7 @@ const AddEditPlant = (props) => {
             <option value={'add'}>Add New Plant</option>
             {plants.map((plant) => (
               <option value={plant.id}>
-                  `${plant.id} : ${plant.nickname}`
+                  {plant.id} : {plant.nickname}
                   </option>
             ))}
           </select>
