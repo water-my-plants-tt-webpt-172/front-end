@@ -6,7 +6,8 @@ export const initialState = {
     user: {
         username: '',
         password: '',
-        phone: ''
+        phone: '',
+        user_id : ''
     },
     plants: [],
     error: '',
@@ -49,7 +50,8 @@ const reducer = (state = initialState, action) => {
                 password: '',
                 isLoading: false,
                 error: '',
-                success: 'Login Successful'
+                success: 'Login Successful',
+                //user_id: 
             }
         case actions.USER_SIGN_SUCCESS:
             //Maybe have it auto sign in users after sign up

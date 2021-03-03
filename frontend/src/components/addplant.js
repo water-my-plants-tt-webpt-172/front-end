@@ -1,60 +1,94 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from 'react';
+import { speciesTypeOptions } from './speciesoptions'
+import { addPlant } from '../api/actions'
+import { connect } from 'react-redux'
+import _ from 'lodash'
 
-class addplant extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { nickname: "", species: "" };
-    this.id = "#";
-    this.addSpeciesHandler = this.addSpeciesHandler.bind(this);
-    this.addNameHandler = this.addNameHandler.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-  }
 
-  //need  to pass id prop
+function AddPlant(props) {
 
-  addSpeciesHandler = (e) => {
-    this.setState({ species: e.target.value });
-  };
 
-  addNameHandler = (e) => {
-    this.setState({ nickname: e.target.value });
-  };
+    const [state, setState] = useState({ nickname: '', species: '', h2oFrequency: '1' });
+    const [species, setSpecies] = useState({ species: '', h2oFrequency: '' })
+    console.log(state)
+    console.log(species)
 
-  //should addSpecies & addName be combined?
 
-  submitHandler = (e) => {
-    alert(
-      `Your ${this.state.species} plant, ${this.state.nickname} was successfully added to your plant gallery`
-    );
-    e.preventDefault();
-  };
+    useEffect(() => {
+        setState({
+            ...state,
+            species : species.species,
+            h2oFrequency : species.h2oFrequency
+        })
+    },[species])
 
-  //maybe get rid of confirmation alert or add a confirmation component later?
+    const onInputChange = e => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    };
 
-  render() {
+
+    const onSpeciesChange = e => {
+        const [selectedSpecies] = speciesTypeOptions.filter((item) => {
+            return item.species == e.target.value;
+        })
+        setSpecies(selectedSpecies)
+        console.log(species)
+    }
+
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        props.addPlant(state);
+        setState({ nickname: '', species: '', h2oFrequency: '1' });
+        setSpecies({ species: '', h2oFrequency: '' })
+    }
+
+    //maybe get rid of confirmation alert or add a confirmation component later?
+
     return (
-      <form onSubmit={this.submitHandler}>
-        <label>
-          Please select Plant Species:
-          <select value={this.state.species} onChange={this.addSpeciesHandler}>
-            <option value="succulent">Succulent</option>
-            <option value="cactus">Cactus</option>
-            <option value="tropical">Tropical</option>
-            <option value="air">Air Plant</option>
-            <option value="curio">Curio</option>
-            <option value="orchid">Orchid</option>
-          </select>
-        </label>
-        <input
-          type="text"
-          placeholder="Nickname"
-          value={this.state.nickname}
-          onChange={this.addNameHandler}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+        <form onSubmit={submitHandler}>
+            <select name="species" onChange={onSpeciesChange}>
+                <option value=''>Select Species Type</option>
+                {speciesTypeOptions.map((speciesH2o) => (
+                    <option
+                        value={speciesH2o.species}>
+                        {speciesH2o.species}
+                    </option>
+                ))}
+            </select>
+            <input type='text'
+                name="nickname"
+                placeholder='Nickname'
+                onChange={onInputChange} />
+            <input type='text'
+                name="h2oFrequency"
+                placeholder={state.h2oFrequency}
+                onChange={onInputChange} />
+            <input type='submit' value="Submit" />
+        </form>
     );
-  }
 }
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        isLoading: state.user,
+        plants: state.plants,
+        error: state.error,
+        success: state.success,
+    };
+};
 
-export default addplant;
+const mapDispatchToProps = { addPlant };
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPlant);
+
+    // addSpeciesHandler = (e) => {
+    //     setState({ species: e.target.value })
+    // }
+
+    // addNameHandler = (e) => {
+    //     setState({ nickname: e.target.value })
+    // }
