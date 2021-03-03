@@ -11,7 +11,7 @@ import * as style from "./styledcomp";
 //   ];
 
 const Modal = ({ showModal, setShowModal }) => {
-  //
+  
   return (
     <>
       {/* if show modal is true then display modal div otherwise it's set to null */}
