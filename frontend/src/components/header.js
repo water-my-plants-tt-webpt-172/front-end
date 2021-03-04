@@ -16,7 +16,7 @@ const Header = (props) => {
     // here we are setting the setShowModal value to the opposite
     setShowModal(!showModal);
   };
-
+  console.log(plants)
   return (
     <div className="App">
         <style.Container>

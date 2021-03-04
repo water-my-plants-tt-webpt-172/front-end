@@ -203,3 +203,5 @@ export const WaterReset = styled.button`
   padding: .5rem;
   border: 1px solid rgba(0, 0, 0, 0.3);
 `;
+
+export const Settings

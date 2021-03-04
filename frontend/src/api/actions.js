@@ -15,7 +15,7 @@ export const UPDATE_ERROR = "UPDATE_ERROR";
 export const getPlants = () => dispatch => {
     dispatch({ type: API_ACTION_START });
     authWithAxios()
-        .get('https://dont-let-it-die.herokuapp.com/plants/' /*+ localStorage.getItem('id')*/)
+        .get('https://dont-let-it-die.herokuapp.com/plants/user/' + localStorage.getItem('id'))
         .then(res => {
             console.log(res)
             dispatch({ type: PLANT_GET_SUCCESS, payload: res.data})})

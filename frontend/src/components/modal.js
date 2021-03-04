@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddPlant from "./addplant";
 import * as style from "./styledcomp";
+import AddEditPlant from "./addeditplant";
 
 // import { usersPlants } from "./plantgallery";
 
@@ -10,8 +11,9 @@ import * as style from "./styledcomp";
 //     { id: 3, nickname: "Spike", species: "air" }
 //   ];
 
-const Modal = ({ showModal, setShowModal }) => {
-  
+const Modal = (props) => {
+  const { showModal, setShowModal, plants } = props;
+
   return (
     <>
       {/* if show modal is true then display modal div otherwise it's set to null */}
@@ -19,28 +21,10 @@ const Modal = ({ showModal, setShowModal }) => {
       {showModal ? (
         <style.Background>
           <style.ModalWrapper showModal={showModal}>
-            {/* <ModalImg
-                src={require("../img/waves-moonlight.jpg")}
-                alt="modal image"
-              /> */}
             <style.ModalContent>
-              <style.ModalForm>
-                <style.ModalInput></style.ModalInput>
-                <style.ModalInput></style.ModalInput>
-                <style.ModalInput></style.ModalInput>
-              </style.ModalForm>
+              <AddEditPlant plants={plants} />
             </style.ModalContent>
-            <style.ModalContent>
-              {/* <p>The deep ocean floor.</p>
-                <p>Lights up from the octopus.</p>
-                <p> But his ink blends in.</p>
-                <button>Submit</button> */}
-              <style.ModalForm>
-                <style.ModalInput></style.ModalInput>
-                <style.ModalInput></style.ModalInput>
-                <style.ModalInput></style.ModalInput>
-              </style.ModalForm>
-            </style.ModalContent>
+            <style.ModalContent></style.ModalContent>
             <style.CloseModalButton
               aria-label="Close Modal"
               // this onClick will toggle the opposite of setShowModal
