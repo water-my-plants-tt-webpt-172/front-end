@@ -8,10 +8,8 @@ import _ from 'lodash'
 function AddPlant(props) {
 
 
-    const [state, setState] = useState({ nickname: '', species: '', h2oFrequency: '1' });
+    const [state, setState] = useState({ nickname: '', species: '', h2oFrequency: '1' , user_id: parseInt(localStorage.getItem('id'))});
     const [species, setSpecies] = useState({ species: '', h2oFrequency: '' })
-    console.log(state)
-    console.log(species)
 
 
     useEffect(() => {

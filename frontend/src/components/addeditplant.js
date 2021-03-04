@@ -28,6 +28,7 @@ const AddEditPlant = (props) => {
         <form>
           <select onChange={onInputChange}>
             <option value={'add'}>Add New Plant</option>
+            {console.log(plants)}
             {plants.map((plant) => (
               <option value={plant.id}>
                   {plant.id} : {plant.nickname}

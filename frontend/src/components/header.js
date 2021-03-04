@@ -16,19 +16,20 @@ const Header = (props) => {
     // here we are setting the setShowModal value to the opposite
     setShowModal(!showModal);
   };
+  console.log(plants);
 
   return (
     <div className="App">
-        <style.Container>
-          <h1>Plant Gallery</h1>
-          <style.Button onClick={openModal}>Add / Edit</style.Button>
-          <Modal
-            plants={plants}
-            showModal={showModal}
-            setShowModal={setShowModal}
-          />
-        </style.Container>
-        <style.LineBreak/>
+      <style.Container>
+        <h1>Plant Gallery</h1>
+        <style.SettingsIcon onClick={openModal} aria-label="Settings Icon" />
+        <Modal
+          plants={plants}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      </style.Container>
+      <style.LineBreak />
     </div>
   );
 };
