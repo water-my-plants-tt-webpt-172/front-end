@@ -6,7 +6,6 @@ import _ from 'lodash'
 
 const EditPlant = (props) => {
     
-    props.
     const [state, setState] = useState({ nickname: '', species: '', h2oFrequency: '1' });
     const [species, setSpecies] = useState({ species: '', h2oFrequency: '' })
 
