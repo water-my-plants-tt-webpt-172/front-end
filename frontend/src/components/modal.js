@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddPlant from "./addplant";
 import * as style from "./styledcomp";
 import AddEditPlant from "./addeditplant";
+import UserForm from "./userForm";
 
 // import { usersPlants } from "./plantgallery";
 
@@ -24,7 +25,9 @@ const Modal = (props) => {
             <style.ModalContent>
               <AddEditPlant plants={plants} />
             </style.ModalContent>
-            <style.ModalContent></style.ModalContent>
+            <style.ModalContent>
+              <UserForm />
+            </style.ModalContent>
             <style.CloseModalButton
               aria-label="Close Modal"
               // this onClick will toggle the opposite of setShowModal

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import { FiSettings } from "react-icons/fi";
 
 export const FormDivider = styled.span`
   border: 1px solid #333;
@@ -72,16 +73,10 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Button = styled.button`
-  min-width: 100px;
-  padding: 16px 32px;
-  border-radius: 14px;
-  border: none;
-  background: #333;
-  color: #49fcd4;
-  font-size: 24px;
+export const SettingsIcon = styled(FiSettings)`
+  font-size: 2.5rem;
+  margin-top: 1rem;
   cursor: pointer;
-  outline: none;
 `;
 
 export const LineBreak = styled.hr`
@@ -200,8 +195,6 @@ export const WaterReset = styled.button`
   margin-bottom: 1rem;
   border-radius: 8px;
   outline: none;
-  padding: .5rem;
+  padding: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.3);
 `;
-
-export const Settings
