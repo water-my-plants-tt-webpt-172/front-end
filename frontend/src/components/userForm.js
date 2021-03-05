@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as style from "./styledcomp";
 
 const UserForm = (props) => {
   const [user, setUser] = useState({
@@ -17,26 +18,26 @@ const UserForm = (props) => {
   };
 
   return (
-    <form>
-      <input
+    <style.FormFlexColumn>
+      <style.ModalFormInput
         type="Password"
         name="Old Password"
         placeholder="Enter current password"
       />
-      <input
+      <style.ModalFormInput
         type="Password"
         name="New Password"
         placeholder="Enter new password"
       />
-      <input
+      <style.ModalFormInput
         type="Password"
         name="Verify Password"
         placeholder="Verify new password"
       />
-      <button onClick={passSubmit}>Change Password</button>
-      <input type="tel" name="Phone Number" placeholder={props.phone} />
-      <button onClick={phoneSubmit}>Change Phone Number</button>
-    </form>
+      <style.FormButton onClick={passSubmit}>Change Password</style.FormButton>
+      <style.ModalFormInput type="tel" name="Phone Number" placeholder={props.phone} />
+      <style.FormButton onClick={phoneSubmit}>Change Phone Number</style.FormButton>
+    </style.FormFlexColumn>
   );
 };
 
