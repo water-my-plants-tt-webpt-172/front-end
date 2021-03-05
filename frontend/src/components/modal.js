@@ -33,6 +33,7 @@ const Modal = (props) => {
               // this onClick will toggle the opposite of setShowModal
               onClick={() => setShowModal(!showModal)}
             />
+            <style.LogOutBtn>Log Out</style.LogOutBtn>
           </style.ModalWrapper>
         </style.Background>
       ) : null}

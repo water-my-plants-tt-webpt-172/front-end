@@ -96,8 +96,8 @@ export const Background = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 900px;
-  height: 500px;
+  width: 850px;
+  height: 550px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -197,4 +197,82 @@ export const WaterReset = styled.button`
   outline: none;
   padding: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.3);
+`;
+
+export const FormFlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 10px;
+`;
+
+export const ModalFormInput = styled.input`
+  margin: 0.7rem auto;
+  width: 68%;
+`;
+
+export const ModalFormSelect = styled.select`
+  margin: 0.7rem auto;
+  width: 68%;
+`;
+
+export const ModalFormOption = styled.option`
+  width: 80%;
+`;
+
+export const InputButton = styled.input`
+  display: block;
+  font-size: 0.9rem;
+  border: 0;
+  border-radius: 5px;
+  height: 2rem;
+  width: 70%;
+  margin: 0.9rem auto;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: #333;
+  color: #fff;
+`;
+
+export const WaterFormLabel = styled.label`
+  font-size: 0.9rem;
+`;
+
+export const LogOutBtn = styled.button`
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 1rem;
+  border: 0;
+  border-radius: 5px;
+  margin: 0 auto;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: #49fcd4;
+  color: #333;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  text-align: center;
+
+  &:hover {
+    background: #333;
+    color: #49fcd4;
+  }
+`;
+
+export const ModalUser = styled.div`
+  display: block;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  text-align: left;
+  text-decoration: underline;
+
+  position: absolute;
+  top: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
 `;
