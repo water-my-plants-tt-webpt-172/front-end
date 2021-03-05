@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { speciesTypeOptions } from './speciesoptions'
 import { editPlant, deletePlant } from '../api/actions'
 import { connect } from 'react-redux'
-import _ from 'lodash'
 import * as style from "./styledcomp";
 
 const EditPlant = (props) => {
@@ -28,7 +27,7 @@ const EditPlant = (props) => {
 
     const onSpeciesChange = (e) => {
         const [selectedSpecies] = speciesTypeOptions.filter((item) => {
-          return item.species == e.target.value;
+          return item.species === e.target.value;
         });
         setSpecies(selectedSpecies);
         console.log(species);

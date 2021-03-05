@@ -39,7 +39,8 @@ const mapStateToProps = (state) => {
     plants: state.plants,
     error: state.error,
     success: state.success,
-    madeChange: state.madeChange
+    madeChange: state.madeChange,
+    user: state.user
   };
 };
 

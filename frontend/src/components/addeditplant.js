@@ -3,6 +3,7 @@ import AddPlant from "./addplant";
 import EditPlant from "./editplant";
 import * as style from "./styledcomp";
 
+
 const AddEditPlant = (props) => {
   const { plants } = props;
   console.log(plants);
@@ -25,7 +26,7 @@ const AddEditPlant = (props) => {
   return (
     <div>
       <style.ModalUser>
-        <p>USERNAME</p>
+        <p>{localStorage.getItem('username')}</p>
       </style.ModalUser>
       <form>
         <style.FormFlexColumn>

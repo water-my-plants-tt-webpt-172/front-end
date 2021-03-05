@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LoginForm, FormInput, FormButton,FormHeading } from "./styledcomp";
 import { userLogin } from '../api/actions'
 import { connect } from 'react-redux'
@@ -24,10 +24,13 @@ const Login = (props) => {
     const formSubmit = (e) => {
       e.preventDefault();
       props.userLogin(user);
+    };
+
+    useEffect(() => {
       if(localStorage.getItem('token') !== null){
         history.push('/plants')
       }
-    };
+    },[formSubmit])
 
     const success = props.success;
 
