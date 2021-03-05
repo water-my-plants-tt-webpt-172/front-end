@@ -3,6 +3,7 @@ import AddPlant from "./addplant";
 import * as style from "./styledcomp";
 import AddEditPlant from "./addeditplant";
 import UserForm from "./userForm";
+import { useHistory } from "react-router-dom"
 
 // import { usersPlants } from "./plantgallery";
 
@@ -14,6 +15,13 @@ import UserForm from "./userForm";
 
 const Modal = (props) => {
   const { showModal, setShowModal, plants } = props;
+
+  const history = useHistory();
+
+  const intiateLogout = () => {
+    localStorage.clear();
+    history.push('/');
+  }
 
   return (
     <>
@@ -33,7 +41,7 @@ const Modal = (props) => {
               // this onClick will toggle the opposite of setShowModal
               onClick={() => setShowModal(!showModal)}
             />
-            <style.LogOutBtn>Log Out</style.LogOutBtn>
+            <style.LogOutBtn onClick={intiateLogout}>Log Out</style.LogOutBtn>
           </style.ModalWrapper>
         </style.Background>
       ) : null}
