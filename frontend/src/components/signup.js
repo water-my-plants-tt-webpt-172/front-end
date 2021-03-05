@@ -58,7 +58,7 @@ const [user, setUser] = useState({
 
 const mapStateToProps = (state) => {
   return {
-    isLoading: state.user,
+    isLoading: state.isLoading,
     user: state.user,
     error: state.error,
     success: state.success

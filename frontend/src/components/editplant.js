@@ -6,9 +6,11 @@ import _ from 'lodash'
 
 const EditPlant = (props) => {
     
-    const [state, setState] = useState({ nickname: '', species: '', h2oFrequency: '1' });
+    let plant = (props.plant).split(',');
+    console.log(plant)
+    const [state, setState] = useState({nickname: plant[1], species: plant[2], h2oFrequency: plant[3] , user_id: parseInt(localStorage.getItem('id'))});
     const [species, setSpecies] = useState({ species: '', h2oFrequency: '' })
-
+    console.log(state)
 
     useEffect(() => {
         setState({
@@ -17,6 +19,11 @@ const EditPlant = (props) => {
             h2oFrequency : species.h2oFrequency
         })
     },[species])
+
+    useEffect(() => {
+        plant = (props.plant).split(',');
+        setState({nickname: plant[1], species: plant[2], h2oFrequency: plant[3] , user_id: parseInt(localStorage.getItem('id'))})
+    },[props.plant])
 
     const onInputChange = e => {
         setState({
@@ -37,9 +44,7 @@ const EditPlant = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        props.addPlant(state);
-        setState({ nickname: '', species: '', h2oFrequency: '1' });
-        setSpecies({ species: '', h2oFrequency: '' })
+        props.editPlant(plant[0], state);
     }
 
     //maybe get rid of confirmation alert or add a confirmation component later?
@@ -61,16 +66,15 @@ const EditPlant = (props) => {
                 onChange={onInputChange} />
             <input type='text'
                 name="h2oFrequency"
-                placeholder={state.h2oFrequency}
+                placeholder={"Water Frequency (in days) :" + state.h2oFrequency}
                 onChange={onInputChange} />
             <input type='submit' value="Submit" />
         </form>
     );
 }
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
-        isLoading: state.user,
+        isLoading: state.isLoading,
         plants: state.plants,
         error: state.error,
         success: state.success,

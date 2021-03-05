@@ -72,7 +72,7 @@ function AddPlant(props) {
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        isLoading: state.user,
+        isLoading: state.isLoading,
         plants: state.plants,
         error: state.error,
         success: state.success,
