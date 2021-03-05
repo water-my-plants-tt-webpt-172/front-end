@@ -32,10 +32,10 @@ export const addPlant = (plant) => dispatch => {
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}));
 }
 
-export const editPlant = (plant) => dispatch => {
+export const editPlant = (plantId, plant) => dispatch => {
     dispatch({ type: API_ACTION_START });
     authWithAxios()
-        .put(`https://dont-let-it-die.herokuapp.com/plants/${plant}`, plant)
+        .put(`https://dont-let-it-die.herokuapp.com/plants/` + plantId, plant)
         .then(res =>
             dispatch({ type: PLANT_UPDATE_SUCCESS, payload: res.data}))
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))

@@ -21,7 +21,7 @@ const Header = (props) => {
   return (
     <div className="App">
       <style.Container>
-        <h1>Plant Gallery</h1>
+        <h1>Water My Plants</h1>
         <style.SettingsIcon onClick={openModal} aria-label="Settings Icon" />
         <Modal
           plants={plants}

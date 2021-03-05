@@ -21,6 +21,7 @@ const AddEditPlant = (props) => {
 
     const onInputChange = e => {
         setDropDownOption(e.target.value)
+        console.log(dropDownOption)
     };
 
     return (
@@ -30,7 +31,7 @@ const AddEditPlant = (props) => {
             <option value={'add'}>Add New Plant</option>
             {console.log(plants)}
             {plants.map((plant) => (
-              <option value={plant.id}>
+              <option value={[plant.id, plant.nickname, plant.species, plant.h2oFrequency]}>
                   {plant.id} : {plant.nickname}
                   </option>
             ))}
@@ -38,7 +39,7 @@ const AddEditPlant = (props) => {
         </form>
             {addOrEdit ?
                 <AddPlant /> :
-                <EditPlant plantId={dropDownOption} />
+                <EditPlant plant={dropDownOption} />
             }
         </div>
     )

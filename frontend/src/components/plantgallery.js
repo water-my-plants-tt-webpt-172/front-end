@@ -9,8 +9,9 @@ const PlantGallery = (props) => {
   useEffect(() => {
     props.getPlants();
     console.log(props.plants);
-  }, [props.isLoading]);
-
+  }, [props.madeChange]);
+  
+  console.log(props.madeChange)
   return (
     <style.Body>
       <Header plants={props.plants} />
@@ -34,10 +35,11 @@ const PlantGallery = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLoading: state.user,
+    isLoading: state.isLoading,
     plants: state.plants,
     error: state.error,
     success: state.success,
+    madeChange: state.madeChange
   };
 };
 
