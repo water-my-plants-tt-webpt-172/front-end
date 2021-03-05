@@ -10,7 +10,8 @@ export const initialState = {
     },
     plants: [],
     error: '',
-    success: ''
+    success: '',
+    madeChange: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,14 +27,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                error: action.payload,
+                madeChange: false
             };
         case actions.PLANT_GET_SUCCESS:
             return {
                 ...state,
                 plants: action.payload,
                 isLoading: false,
-                error: ''
+                error: '',
+                madeChange: false
             };
         case actions.PLANT_UPDATE_SUCCESS:
             actions.getPlants();
@@ -41,7 +44,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 success: action.payload,
-                error: ''
+                error: '',
+                madeChange: true
             };
         case actions.USER_LOGIN_SUCCESS:
             return {
@@ -50,6 +54,7 @@ const reducer = (state = initialState, action) => {
                 isLoading: false,
                 error: '',
                 success: 'Login Successful',
+                madeChange: true
             }
         case actions.USER_SIGN_SUCCESS:
             //Maybe have it auto sign in users after sign up
@@ -59,7 +64,8 @@ const reducer = (state = initialState, action) => {
                 username: '',
                 password: '',
                 error: '',
-                success: 'User Registered'
+                success: 'User Registered',
+                madeChange: true
             }
         default:
             return state;

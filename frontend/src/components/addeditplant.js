@@ -35,14 +35,14 @@ const AddEditPlant = (props) => {
               <option value={"add"}>Select plant to edit</option>
               {console.log(plants)}
               {plants.map((plant) => (
-                <option value={plant.id}>
+                <option value={[plant.id, plant.nickname, plant.species, plant.h2oFrequency]}>
                   {plant.id} : {plant.nickname}
                 </option>
               ))}
             </select>
           </label>
         </style.FormFlexColumn>
-        {addOrEdit ? <AddPlant /> : <EditPlant plantId={dropDownOption} />}
+        {addOrEdit ? <AddPlant /> : <EditPlant plant={dropDownOption} />}
       </form>
     </div>
   );

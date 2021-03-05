@@ -79,13 +79,13 @@ function AddPlant(props) {
   );
 }
 const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    isLoading: state.user,
-    plants: state.plants,
-    error: state.error,
-    success: state.success,
-  };
+    console.log(state);
+    return {
+        isLoading: state.isLoading,
+        plants: state.plants,
+        error: state.error,
+        success: state.success,
+    };
 };
 
 const mapDispatchToProps = { addPlant };

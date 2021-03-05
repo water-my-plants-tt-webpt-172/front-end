@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { speciesTypeOptions } from "./speciesoptions";
-import { editPlant } from "../api/actions";
-import { connect } from "react-redux";
-import _ from "lodash";
+
+import React, { useEffect, useState } from 'react';
+import { speciesTypeOptions } from './speciesoptions'
+import { editPlant, deletePlant } from '../api/actions'
+import { connect } from 'react-redux'
+import _ from 'lodash'
 import * as style from "./styledcomp";
 
 const EditPlant = (props) => {
-  const [state, setState] = useState({
-    nickname: "",
-    species: "",
-    h2oFrequency: "1",
-  });
-  const [species, setSpecies] = useState({ species: "", h2oFrequency: "" });
-
-  useEffect(() => {
-    setState({
-      ...state,
-      species: species.species,
-      h2oFrequency: species.h2oFrequency,
-    });
-  }, [species]);
+    
+    let plant = (props.plant).split(',');
+    console.log(plant)
+    const [state, setState] = useState({nickname: plant[1], species: plant[2], h2oFrequency: plant[3] , user_id: parseInt(localStorage.getItem('id'))});
+    const [species, setSpecies] = useState({ species: '', h2oFrequency: '' })
+    console.log(state)
 
   const onInputChange = (e) => {
     setState({
@@ -28,23 +21,27 @@ const EditPlant = (props) => {
     });
   };
 
-  const onSpeciesChange = (e) => {
-    const [selectedSpecies] = speciesTypeOptions.filter((item) => {
-      return item.species == e.target.value;
-    });
-    setSpecies(selectedSpecies);
-    console.log(species);
-  };
+    useEffect(() => {
+        plant = (props.plant).split(',');
+        setState({nickname: plant[1], species: plant[2], h2oFrequency: plant[3] , user_id: parseInt(localStorage.getItem('id'))})
+    },[props.plant])
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    props.addPlant(state);
-    setState({ nickname: "", species: "", h2oFrequency: "1" });
-    setSpecies({ species: "", h2oFrequency: "" });
-  };
+    const onInputChange = e => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    };
+    const submitHandler = (e) => {
+        e.preventDefault();
+        props.editPlant(plant[0], state);
+    }
 
-  //maybe get rid of confirmation alert or add a confirmation component later?
-
+    const deleteHandler = (e) => {
+        e.preventDefault();
+        props.deletePlant(plant[0])
+    }
+    
   return (
     <div>
       <style.FormFlexColumn onSubmit={submitHandler}>
@@ -67,20 +64,22 @@ const EditPlant = (props) => {
           onChange={onInputChange}
         />
         <style.ModalFormInput type="submit" value="Submit" />
+          <div>
+                <input type="button" value="Delete Plant" onClick={deleteHandler}/>
+          </div>
       </style.FormFlexColumn>
     </div>
   );
 };
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    isLoading: state.user,
+    isLoading: state.isLoading,
     plants: state.plants,
     error: state.error,
     success: state.success,
   };
 };
 
-const mapDispatchToProps = { editPlant };
+const mapDispatchToProps = { editPlant, deletePlant };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPlant);
