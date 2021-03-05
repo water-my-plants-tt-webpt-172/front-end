@@ -23,7 +23,7 @@ const Modal = (props) => {
         <style.Background>
           <style.ModalWrapper showModal={showModal}>
             <style.ModalContent>
-              <AddEditPlant plants={plants} />
+              <AddEditPlant plants={plants}/>
             </style.ModalContent>
             <style.ModalContent>
               <UserForm />

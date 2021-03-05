@@ -58,6 +58,7 @@ export const userLogin = (loginInfo) => dispatch => {
             console.log(res.data.data.id)
             localStorage.setItem('id', res.data.data.id);
             localStorage.setItem('token' , res.data.token);
+            localStorage.setItem('username' , res.data.data.username)
             dispatch({type: USER_LOGIN_SUCCESS})
         })
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
@@ -78,7 +79,7 @@ export const userSignUp = (signUpInfo) => dispatch => {
 export const userEdit = (userEdit) => dispatch => {
     dispatch({ type: API_ACTION_START });
     authWithAxios()
-        .patch(`https://dont-let-it-die.herokuapp.com/users/update/${userEdit.username}`, userEdit)
+        .patch(`https://dont-let-it-die.herokuapp.com/users/update/`+ localStorage.getItem('username'), userEdit)
         .then(res => {
             dispatch({type: USER_SIGN_SUCCESS, payload : res.data})
         })
