@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { speciesTypeOptions } from './speciesoptions'
-import { editPlant } from '../api/actions'
+import { editPlant, deletePlant } from '../api/actions'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 
@@ -47,6 +47,11 @@ const EditPlant = (props) => {
         props.editPlant(plant[0], state);
     }
 
+    const deleteHandler = (e) => {
+        e.preventDefault();
+        props.deletePlant(plant[0])
+    }
+
     //maybe get rid of confirmation alert or add a confirmation component later?
 
     return (
@@ -69,6 +74,9 @@ const EditPlant = (props) => {
                 placeholder={"Water Frequency (in days) :" + state.h2oFrequency}
                 onChange={onInputChange} />
             <input type='submit' value="Submit" />
+            <div>
+                <input type="button" value="Delete Plant" onClick={deleteHandler}/>
+            </div>
         </form>
     );
 }
@@ -81,6 +89,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = { editPlant };
+const mapDispatchToProps = { editPlant, deletePlant };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPlant);
