@@ -20,6 +20,7 @@ function AddPlant(props) {
       species: species.species,
       h2oFrequency: species.h2oFrequency,
     });
+    console.log(species)
   }, [species]);
 
   const onInputChange = (e) => {
@@ -48,7 +49,7 @@ function AddPlant(props) {
 
   return (
     <div>
-      <style.FormFlexColumn onSubmit={submitHandler}>
+      <style.FormFlexColumn>
         <label>
           Add new plant to gallery:
           <style.ModalFormSelect name="species" onChange={onSpeciesChange}>
@@ -72,7 +73,7 @@ function AddPlant(props) {
             placeholder={state.h2oFrequency}
             onChange={onInputChange}
           />
-          <style.InputButton type="submit" value="Submit" />
+          <style.InputButton type="button" value="Submit" onClick={submitHandler} />
         </style.WaterFormLabel>
       </style.FormFlexColumn>
     </div>

@@ -26,12 +26,14 @@ const EditPlant = (props) => {
         setState({nickname: plant[1], species: plant[2], h2oFrequency: plant[3] , user_id: parseInt(localStorage.getItem('id'))})
     },[props.plant])
 
-    const onInputChange = e => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
-    };
+    const onSpeciesChange = (e) => {
+        const [selectedSpecies] = speciesTypeOptions.filter((item) => {
+          return item.species == e.target.value;
+        });
+        setSpecies(selectedSpecies);
+        console.log(species);
+      };
+
     const submitHandler = (e) => {
         e.preventDefault();
         props.editPlant(plant[0], state);
@@ -44,7 +46,7 @@ const EditPlant = (props) => {
     
   return (
     <div>
-      <style.FormFlexColumn onSubmit={submitHandler}>
+      <style.FormFlexColumn>
         <select name="species" onChange={onSpeciesChange}>
           <option value="">Select Species Type</option>
           {speciesTypeOptions.map((speciesH2o) => (
@@ -63,9 +65,9 @@ const EditPlant = (props) => {
           placeholder={state.h2oFrequency}
           onChange={onInputChange}
         />
-        <style.ModalFormInput type="submit" value="Submit" />
+        <style.InputButton type="button" value="Submit" onClick={submitHandler} />
           <div>
-                <input type="button" value="Delete Plant" onClick={deleteHandler}/>
+                <style.InputButton type="button" value="Delete Plant" onClick={deleteHandler}/>
           </div>
       </style.FormFlexColumn>
     </div>

@@ -199,7 +199,7 @@ export const WaterReset = styled.button`
   border: 1px solid rgba(0, 0, 0, 0.3);
 `;
 
-export const FormFlexColumn = styled.div`
+export const FormFlexColumn = styled.form`
   display: flex;
   flex-direction: column;
   min-width: 300px;

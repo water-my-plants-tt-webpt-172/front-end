@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: action.payload,
-                madeChange: false
+                madeChange: false,
             };
         case actions.PLANT_GET_SUCCESS:
             return {
@@ -39,7 +39,6 @@ const reducer = (state = initialState, action) => {
                 madeChange: false
             };
         case actions.PLANT_UPDATE_SUCCESS:
-            actions.getPlants();
             return {
                 ...state,
                 isLoading: false,
