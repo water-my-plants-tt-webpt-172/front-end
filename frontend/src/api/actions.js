@@ -79,7 +79,7 @@ export const userSignUp = (signUpInfo) => dispatch => {
 export const userEdit = (userEdit) => dispatch => {
     dispatch({ type: API_ACTION_START });
     authWithAxios()
-        .patch(`https://dont-let-it-die.herokuapp.com/users/update/`+ localStorage.getItem('username'), userEdit)
+        .patch(`https://dont-let-it-die.herokuapp.com/users/`+ localStorage.getItem('id'), userEdit)
         .then(res => {
             dispatch({type: USER_SIGN_SUCCESS, payload : res.data})
         })

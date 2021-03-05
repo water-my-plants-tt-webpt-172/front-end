@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import AddPlant from "./addplant";
+import React from "react";
 import * as style from "./styledcomp";
 import AddEditPlant from "./addeditplant";
 import UserForm from "./userForm";
