@@ -276,3 +276,24 @@ export const ModalUser = styled.div`
   font-weight: bold;
   letter-spacing: 1px;
 `;
+
+export const WateringIndicator = styled.hr`
+  width: 70%;
+  margin: 0.7rem auto;
+  border: 2px solid black;
+`;
+
+export const Footer = styled.footer`
+  padding: 5rem;
+  background-color: #49fcd4;
+  max-width: 100vw;
+  margin-top: 5rem;
+`;
+
+export const HtmlBody = styled.div`
+  overflow: hidden;
+`;
+
+export const Title = styled.h2`
+  margin: auto;
+`;

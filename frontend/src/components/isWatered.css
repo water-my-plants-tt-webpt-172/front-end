@@ -1,0 +1,17 @@
+.needsWater {
+  color: #333;
+  background-color: #FC4971;
+  margin: 1rem;
+}
+
+.needToWaterSoon {
+  color: #333;
+  background-color: #FCD449;
+  margin: 1rem;
+}
+
+.watered {
+  color: #333;
+  background-color: #49FCD4;
+  margin: 1rem;
+}
