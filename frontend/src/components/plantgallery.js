@@ -10,26 +10,29 @@ const PlantGallery = (props) => {
     props.getPlants();
     console.log(props.plants);
   }, [props.madeChange]);
-  
-  console.log(props.madeChange)
+
+  console.log(props.madeChange);
   return (
-    <style.Body>
-      <Header plants={props.plants} />
-      <style.PlantContainer>  
-        {props.isLoading === true ? (
-          <p className="isLoading">Loading...</p>
-        ) : (
-          props.plants.map((plant) => (
-            <PlantCard
-              id={plant.id}
-              nickname={plant.nickname}
-              species={plant.species}
-              h2oFrequency={plant.h2oFrequency}
-            />
-          ))
-        )}
-      </style.PlantContainer>
-    </style.Body>
+    <style.HtmlBody>
+      <style.Body>
+        <Header plants={props.plants} />
+        <style.PlantContainer>
+          {props.isLoading === true ? (
+            <p className="isLoading">Loading...</p>
+          ) : (
+            props.plants.map((plant) => (
+              <PlantCard
+                id={plant.id}
+                nickname={plant.nickname}
+                species={plant.species}
+                h2oFrequency={plant.h2oFrequency}
+              />
+            ))
+          )}
+        </style.PlantContainer>
+      </style.Body>
+      <style.Footer></style.Footer>
+    </style.HtmlBody>
   );
 };
 
@@ -40,7 +43,7 @@ const mapStateToProps = (state) => {
     error: state.error,
     success: state.success,
     madeChange: state.madeChange,
-    user: state.user
+    user: state.user,
   };
 };
 

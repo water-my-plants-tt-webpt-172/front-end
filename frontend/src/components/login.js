@@ -1,40 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { LoginForm, FormInput, FormButton,FormHeading } from "./styledcomp";
-import { userLogin } from '../api/actions'
-import { connect } from 'react-redux'
+import { LoginForm, FormInput, FormButton, FormHeading } from "./styledcomp";
+import { userLogin } from "../api/actions";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import * as style from "./styledcomp";
 
 const Login = (props) => {
   // setting our form's inital values to be empty
-    const [user, setUser] = useState({
-        username: "",
-        password: ""
-    })
-  
-    const onInputChange = e => {
-      setUser({
-        ...user,
-        [e.target.name]: e.target.value
-      })
-    };
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
 
-    const history = useHistory();
+  const onInputChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    const formSubmit = (e) => {
-      e.preventDefault();
-      props.userLogin(user);
-    };
+  const history = useHistory();
 
-    useEffect(() => {
-      if(localStorage.getItem('token') !== null){
-        history.push('/plants')
-      }
-    },[formSubmit])
+  const formSubmit = (e) => {
+    e.preventDefault();
+    props.userLogin(user);
+  };
 
-    const success = props.success;
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      history.push("/plants");
+    }
+  }, [formSubmit]);
 
-    return (
+  const success = props.success;
+
+  return (
+    <div>
+      <style.Title>Water My Plants</style.Title>
       <LoginForm>
         <FormHeading>Login</FormHeading>
         <FormInput
@@ -51,20 +53,25 @@ const Login = (props) => {
           onChange={onInputChange}
         />
         <FormButton onClick={formSubmit}>Login</FormButton>
-        {success === 'Login Successful' ? <p className="Success">Successful</p> : <p></p>}
+        {success === "Login Successful" ? (
+          <p className="Success">Successful</p>
+        ) : (
+          <p></p>
+        )}
       </LoginForm>
-    );
-  }
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
     isLoading: state.isLoading,
     user: state.user,
     error: state.error,
-    success: state.success
-  }
-}
+    success: state.success,
+  };
+};
 
-const mapDispatchToProps = {userLogin};
+const mapDispatchToProps = { userLogin };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
