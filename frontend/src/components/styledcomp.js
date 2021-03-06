@@ -295,5 +295,17 @@ export const HtmlBody = styled.div`
 `;
 
 export const Title = styled.h2`
+  padding: 5rem;
+  background-color: #49fcd4;
+  color: rgba(68, 68, 68, 0.8);
+  font-size: 2.5rem;
+  position: absolute;
   margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center; 
+  
+  
+  
+
 `;
