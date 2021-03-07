@@ -20,7 +20,7 @@ const IsWatered = (props) => {
       setWatered([waterStates[0], "needsWater"]);
     } else if (
       difference < h2oFrequencyInHours &&
-      h2oFrequencyInHours - difference <= 12
+      h2oFrequencyInHours - difference <= 3
     ) {
       setWatered([waterStates[1], "needToWaterSoon"]);
     } else {

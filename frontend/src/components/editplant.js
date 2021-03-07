@@ -27,10 +27,15 @@ const EditPlant = (props) => {
 
     const onSpeciesChange = (e) => {
         const [selectedSpecies] = speciesTypeOptions.filter((item) => {
-          return item.species === e.target.value;
+          return item.species == e.target.value;
         });
         setSpecies(selectedSpecies);
         console.log(species);
+        setState({
+          ...state,
+          species : species.species,
+          h2oFrequency : species.h2oFrequency
+        })
       };
 
     const submitHandler = (e) => {

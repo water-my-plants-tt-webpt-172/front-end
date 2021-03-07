@@ -28,10 +28,10 @@ const PlantCard = (props) => {
         />
         <style.CardImg src="https://images.unsplash.com/photo-1520565538411-e641b5cc7843?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
         <small>ID : {id}</small>
-        <style.P>{nickname}</style.P>
-        <style.P>{species}</style.P>
+        <style.P>{nickname.toUpperCase()}</style.P>
+        <style.P>{species.toUpperCase()}</style.P>
         {/* {console.log(id)} */}
-        <style.P>{h2oFrequency} days</style.P>
+        <style.P>Water Frequency : {h2oFrequency} days</style.P>
         <style.FormButton onClick={waterPlant}>Water Plant</style.FormButton>
         
       </style.Card>
