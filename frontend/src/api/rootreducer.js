@@ -45,7 +45,8 @@ const reducer = (state = initialState, action) => {
                 isLoading: false,
                 success: action.payload,
                 error: '',
-                madeChange: true
+                madeChange: true,
+                isWatered: ''
             };
         case actions.USER_LOGIN_SUCCESS:
             return {

@@ -11,7 +11,7 @@ const EditPlant = (props) => {
     console.log(plant)
     const [state, setState] = useState({nickname: plant[1], species: plant[2], h2oFrequency: plant[3] , user_id: parseInt(localStorage.getItem('id'))});
     const [species, setSpecies] = useState({ species: '', h2oFrequency: '' })
-    console.log(state)
+
 
   const onInputChange = (e) => {
     setState({
@@ -19,6 +19,15 @@ const EditPlant = (props) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    setState({
+      ...state,
+      species: species.species,
+      h2oFrequency: species.h2oFrequency,
+    });
+    console.log(state)
+  }, [species]);
 
     useEffect(() => {
         plant = (props.plant).split(',');
@@ -30,12 +39,6 @@ const EditPlant = (props) => {
           return item.species == e.target.value;
         });
         setSpecies(selectedSpecies);
-        console.log(species);
-        setState({
-          ...state,
-          species : species.species,
-          h2oFrequency : species.h2oFrequency
-        })
       };
 
     const submitHandler = (e) => {
