@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import IsWatered from "./isWatered";
 import * as style from "./styledcomp";
+import { connect } from 'react-redux'
+import { editPlant , updateIsWatered, waterThePlant } from '../api/actions'
 
 const PlantCard = (props) => {
-  const { id, nickname, species, h2oFrequency } = props;
-  const isWatered = Date.parse("2021-02-28");
-  //   const colorChange (){
-  //     h2oFrequency <= 0 ? true : false
-  //   };
+  const { id, nickname, species, h2oFrequency, isWatered } = props;
+  console.log(isWatered)
+  console.log(props.isWateredGlobal)
+  const  waterPlant = () => {
+    const dateHolder = new Date()
+    props.updateIsWatered(dateHolder)
+    console.log(props.isWateredGlobal)
+    props.editPlant(id, {nickname : nickname, species : species, h2oFrequency : h2oFrequency, isWatered : props.isWateredGlobal})
+    //{nickname : nickname, species : species, h2oFrequency : h2oFrequency, isWatered : props.isWateredGlobal}
+  }
 
   return (
     <div>
@@ -26,9 +33,23 @@ const PlantCard = (props) => {
         {/* {console.log(id)} */}
         <style.P>{h2oFrequency} days</style.P>
         <style.WaterReset>Water Plant</style.WaterReset>
+        <button onClick={waterPlant}>Water Plant</button>
       </style.Card>
     </div>
   );
 };
 
-export default PlantCard;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.isLoading,
+    plants: state.plants,
+    error: state.error,
+    success: state.success,
+    isWateredGlobal: state.isWatered
+  };
+};
+
+const mapDispatchToProps = { editPlant, updateIsWatered, waterThePlant };
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlantCard);
+

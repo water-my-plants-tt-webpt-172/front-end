@@ -14,7 +14,6 @@ const IsWatered = (props) => {
     const h2oFrequencyInHours = h2oFrequencyFromState * 24;
     const waterDateInHours = waterDateFromState / 3600000;
     const currentTimeInHours = Date.now() / 3600000;
-    console.log(h2oFrequencyInHours);
     const difference = currentTimeInHours - waterDateInHours;
 
     if (difference >= h2oFrequencyInHours) {
@@ -30,7 +29,7 @@ const IsWatered = (props) => {
   };
 
   useEffect(() => {
-    waterHandler(plant.isWatered, plant.h2oFrequency);
+    waterHandler(Date.parse(plant.isWatered), plant.h2oFrequency);
   }, []);
 
   return (
