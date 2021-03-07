@@ -181,7 +181,6 @@ export const Card = styled.div`
 export const CardImg = styled.img`
   width: 100%;
   object-fit: contain;
-  bot
 `;
 
 export const P = styled.p`
