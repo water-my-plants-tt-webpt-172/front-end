@@ -19,7 +19,6 @@ function AddPlant(props) {
       species: species.species,
       h2oFrequency: species.h2oFrequency,
     });
-    console.log(species)
   }, [species]);
 
   const onInputChange = (e) => {
