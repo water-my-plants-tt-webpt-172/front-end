@@ -6,17 +6,14 @@ import * as style from "./styledcomp";
 
 const AddEditPlant = (props) => {
   const { plants } = props;
-  console.log(plants);
   const [addOrEdit, setAddOrEdit] = useState(true);
   //Add == TRUE && Edit == False
   const [dropDownOption, setDropDownOption] = useState("add");
 
   useEffect(() => {
-    console.log("Change to Dropdown: " + dropDownOption);
     if (dropDownOption === "add") {
       setAddOrEdit(true);
     } else setAddOrEdit(false);
-    console.log("Value of add:" + addOrEdit);
   }, [dropDownOption]);
 
   const onInputChange = (e) => {
@@ -34,7 +31,6 @@ const AddEditPlant = (props) => {
             Current Plant Inventory:
             <select onChange={onInputChange}>
               <option value={"add"}>Select plant to edit</option>
-              {console.log(plants)}
               {plants.map((plant) => (
                 <option value={[plant.id, plant.nickname, plant.species, plant.h2oFrequency]}>
                   {plant.id} : {plant.nickname}
