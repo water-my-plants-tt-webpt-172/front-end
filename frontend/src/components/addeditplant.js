@@ -26,7 +26,7 @@ const AddEditPlant = (props) => {
   return (
     <div>
       <style.ModalUser>
-        <p>{localStorage.getItem('username')}</p>
+        <p>{localStorage.getItem('username')} settings:</p>
       </style.ModalUser>
       <form>
         <style.FormFlexColumn>

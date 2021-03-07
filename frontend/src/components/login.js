@@ -3,7 +3,7 @@ import { LoginForm, FormInput, FormButton, FormHeading } from "./styledcomp";
 import { userLogin } from "../api/actions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import * as style from "./styledcomp";
+
 
 const Login = (props) => {
   // setting our form's inital values to be empty
@@ -35,8 +35,6 @@ const Login = (props) => {
   const success = props.success;
 
   return (
-    <div>
-      <style.Title>Water My Plants</style.Title>
       <LoginForm>
         <FormHeading>Login</FormHeading>
         <FormInput
@@ -59,7 +57,6 @@ const Login = (props) => {
           <p></p>
         )}
       </LoginForm>
-    </div>
   );
 };
 
