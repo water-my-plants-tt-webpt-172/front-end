@@ -33,7 +33,7 @@ const IsWatered = (props) => {
   }, []);
 
   return (
-    <div className={watered[1]}>
+    <div className={watered[1]} >
       <h2>{watered[0]}</h2>
     </div>
   );
