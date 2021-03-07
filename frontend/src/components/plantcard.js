@@ -32,7 +32,7 @@ const PlantCard = (props) => {
         <style.P>{species}</style.P>
         {/* {console.log(id)} */}
         <style.P>{h2oFrequency} days</style.P>
-        <button onClick={waterPlant}>Water Plant</button>
+        <button style={{padding : "5px" , margin : "5%"}} onClick={waterPlant}>Water Plant</button>
       </style.Card>
     </div>
   );

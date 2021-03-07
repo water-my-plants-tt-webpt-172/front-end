@@ -181,8 +181,7 @@ export const Card = styled.div`
 export const CardImg = styled.img`
   width: 100%;
   object-fit: contain;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  bot
 `;
 
 export const P = styled.p`
