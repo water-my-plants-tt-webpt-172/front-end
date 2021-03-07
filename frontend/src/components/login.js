@@ -36,7 +36,6 @@ const Login = (props) => {
 
   return (
     <div>
-      <style.Title>Water My Plants</style.Title>
       <LoginForm>
         <FormHeading>Login</FormHeading>
         <FormInput
