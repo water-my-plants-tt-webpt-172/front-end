@@ -293,5 +293,6 @@ export const HtmlBody = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: auto;
+  margin: -10rem auto;
+  font-size: 5rem;
 `;

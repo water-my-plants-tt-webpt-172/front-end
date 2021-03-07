@@ -9,7 +9,7 @@ function AddPlant(props) {
     nickname: "",
     species: "",
     h2oFrequency: "1",
-    user_id: parseInt(localStorage.getItem("id")),
+    user_id: parseInt(localStorage.getItem("id"))
   });
   const [species, setSpecies] = useState({ species: "", h2oFrequency: "" });
 
