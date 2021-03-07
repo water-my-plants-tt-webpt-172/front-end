@@ -11,7 +11,8 @@ export const initialState = {
     plants: [],
     error: '',
     success: '',
-    madeChange: false
+    madeChange: false,
+    isWatered: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -65,6 +66,11 @@ const reducer = (state = initialState, action) => {
                 error: '',
                 success: 'User Registered',
                 madeChange: true
+            }
+        case actions.UPDATE_ISWATERED:
+            return {
+                ...state,
+                isWatered : action.payload,
             }
         default:
             return state;

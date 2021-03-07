@@ -9,7 +9,7 @@ export const PLANT_UPDATE_SUCCESS = "PLANT_UPDATE_SUCCESS";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_SIGN_SUCCESS = "USER_SIGN_SUCCESS";
 export const UPDATE_ERROR = "UPDATE_ERROR"; 
-
+export const UPDATE_ISWATERED = "UPDATE_ISWATERED"
 
 
 export const getPlants = () => dispatch => {
@@ -36,8 +36,9 @@ export const editPlant = (plantId, plant) => dispatch => {
     dispatch({ type: API_ACTION_START });
     authWithAxios()
         .put(`https://dont-let-it-die.herokuapp.com/plants/` + plantId, plant)
-        .then(res =>
-            dispatch({ type: PLANT_UPDATE_SUCCESS, payload: res.data}))
+        .then(res => {
+            console.log(res);
+            dispatch({ type: PLANT_UPDATE_SUCCESS, payload: res.data})})
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
 }
 
@@ -55,7 +56,6 @@ export const userLogin = (loginInfo) => dispatch => {
     axios
         .post('https://dont-let-it-die.herokuapp.com/auth/login', loginInfo)
         .then(res => {
-            console.log(res.data.data.id)
             localStorage.setItem('id', res.data.data.id);
             localStorage.setItem('token' , res.data.token);
             localStorage.setItem('username' , res.data.data.username)
@@ -86,10 +86,26 @@ export const userEdit = (userEdit) => dispatch => {
         .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
 }
 
+export const waterThePlant = (plantId, waterValue) => dispatch => {
+        dispatch({ type: API_ACTION_START });
+        authWithAxios()
+            .patch(`https://dont-let-it-die.herokuapp.com/plants/` + plantId, waterValue)
+            .then(res => {
+                console.log(res);
+                dispatch({ type: PLANT_UPDATE_SUCCESS, payload: res.data})})
+            .catch(err => dispatch({ type: API_ACTION_FAIL, payload: err}))
+    }
+
+export const updateIsWatered = (isWateredValue) => {
+    return {
+        type : UPDATE_ISWATERED,
+        payload : isWateredValue
+    }
+}
 
 export const updateError = (error) => {
     return {
-        type: "UPDATE_ERROR",
+        type: UPDATE_ERROR,
         payload: error
     }
 }

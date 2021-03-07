@@ -26,6 +26,7 @@ const PlantGallery = (props) => {
                 nickname={plant.nickname}
                 species={plant.species}
                 h2oFrequency={plant.h2oFrequency}
+                isWatered={plant.isWatered}
               />
             ))
           )}
